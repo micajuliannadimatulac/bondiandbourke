@@ -18,6 +18,25 @@ window.onload = function() {
           messageForm.reset();
       };
   }
+
+  // Scroll-to-more functionality
+  const scrollMoreElements = document.querySelectorAll('.scroll-more');
+  scrollMoreElements.forEach(element => {
+      element.addEventListener('click', function(e) {
+          e.preventDefault();
+          const bgContainer = this.closest('.background-container') || this.closest('.service-background-container');
+          const nextElement = bgContainer.nextElementSibling;
+          
+          if (nextElement) {
+              nextElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+              window.scrollBy({
+                  top: window.innerHeight,
+                  behavior: 'smooth'
+              });
+          }
+      });
+  });
 };
 
   
